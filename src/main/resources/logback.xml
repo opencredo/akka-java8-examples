@@ -1,0 +1,20 @@
+<configuration>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} %X{akkaSource} says: "%msg"%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="asyncConsole" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="console" />
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="asyncConsole"/>
+    </root>
+
+</configuration>
